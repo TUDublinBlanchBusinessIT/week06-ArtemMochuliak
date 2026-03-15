@@ -1,0 +1,7 @@
+[
+  {"name":"order_number","dbType":"string,50","htmlType":"text","validations":"required"},
+  {"name":"customer_name","dbType":"string,255","htmlType":"text","validations":"required"},
+  {"name":"customer_email","dbType":"string,255","htmlType":"text","validations":"required|email"},
+  {"name":"total_price","dbType":"decimal,10,2","htmlType":"number","validations":"required|numeric"},
+  {"name":"status","dbType":"string,50","htmlType":"text","validations":"required"}
+]

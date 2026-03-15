@@ -1,0 +1,6 @@
+[
+  {"name":"order_id","dbType":"integer","htmlType":"number","validations":"required"},
+  {"name":"product_id","dbType":"integer","htmlType":"number","validations":"required"},
+  {"name":"quantity","dbType":"integer","htmlType":"number","validations":"required|numeric"},
+  {"name":"price","dbType":"decimal,10,2","htmlType":"number","validations":"required|numeric"}
+]

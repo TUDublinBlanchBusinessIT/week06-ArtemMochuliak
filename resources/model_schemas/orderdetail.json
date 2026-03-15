@@ -1,0 +1,50 @@
+[
+    {
+        "name": "order_id",
+        "dbType": "integer",
+        "htmlType": "number",
+        "validations": "required",
+        "searchable": false,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
+        "name": "product_id",
+        "dbType": "integer",
+        "htmlType": "number",
+        "validations": "required",
+        "searchable": false,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
+        "name": "quantity",
+        "dbType": "integer",
+        "htmlType": "number",
+        "validations": "required|numeric",
+        "searchable": false,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
+        "name": "price",
+        "dbType": "decimal,10,2",
+        "htmlType": "number",
+        "validations": "required|numeric",
+        "searchable": false,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    }
+]

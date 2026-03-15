@@ -1,0 +1,6 @@
+[
+  {"name":"name","dbType":"string,255","htmlType":"text","validations":"required"},
+  {"name":"description","dbType":"text","htmlType":"textarea","validations":""},
+  {"name":"price","dbType":"decimal,10,2","htmlType":"number","validations":"required|numeric"},
+  {"name":"image","dbType":"string,255","htmlType":"text","validations":""}
+]
