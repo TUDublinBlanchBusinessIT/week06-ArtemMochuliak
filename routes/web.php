@@ -1,29 +1,25 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\productController;
+use App\Http\Controllers\scorderController;
+use App\Http\Controllers\orderdetailController;
 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
 */
 
 Route::get('/', function () {
     return view('welcome');
 });
 
+// Resource routes
+Route::resource('products', productController::class);
+Route::resource('scorders', scorderController::class);
+Route::resource('orderdetails', orderdetailController::class);
 
-Route::resource('products', App\Http\Controllers\productController::class);
-
-
-Route::resource('scorders', App\Http\Controllers\scorderController::class);
-
-
-Route::resource('orderdetails', App\Http\Controllers\orderdetailController::class);
-
-Route::get('product/displaygrid', [App\Http\Controllers\ProductController::class, 'displayGrid'])->name('products.displaygrid');
+// Custom routes for the shop window
+Route::get('product/additem/{id}', [productController::class, 'additem'])->name('products.additem');
+Route::get('product/displaygrid', [productController::class, 'displayGrid'])->name('products.displaygrid');
