@@ -14,7 +14,9 @@
                 <span style="font-size:40px;margin-right:0px;" class="glyphicon glyphicon-shopping-cart navbar-btn"></span>
             </li> 
             <li class="nav-item">
-                <div class="navbar-text" id="shoppingcart" style="font-size:12pt;margin-left:5px;margin-right:0px;">0</div>
+                <div class="navbar-text" id="shoppingcart" style="font-size:12pt;margin-left:5px;margin-right:0px;">
+                    {{ $totalItems }}
+                </div>
             </li> 
             <li class="nav-item">
                 <div class="navbar-text" style="font-size:14pt;margin-left:0px;">Item(s)</div>
@@ -51,26 +53,27 @@ $(".addItem").click(function() {
     $.ajax({
         type: "GET",
         url: "{{ url('product/additem') }}/" + i,
-        dataType: "text", // <-- treat response as plain text
-        success: function(responseText) {
-            try {
-                // parse JSON part from response
-                var response = JSON.parse(responseText.replace(/<[^>]+>/g, '')); 
-                $('#shoppingcart').text(response.total);
-            } catch(e) {
-                console.error("Could not parse JSON:", responseText);
-                alert("Error parsing server response. Check console.");
-            }
+        success: function(response) {
+            $('#shoppingcart').text(response.total);
         },
         error: function(xhr, status, error) {
-            console.log("AJAX Status:", status);
-            console.log("AJAX Error:", error);
-            console.log("Server Response:", xhr.responseText);
-            alert("Problem communicating with the server. Check console for details.");
+            console.log("AJAX Error:", status, error);
         }
     });
 });
 
+$("#emptycart").click(function() {
+    $.ajax({
+        type: "GET",
+        url: "{{ url('product/emptycart') }}",
+        success: function() {
+            $('#shoppingcart').text(0);
+        },
+        error: function(xhr, status, error) {
+            console.log("AJAX Error:", status, error);
+        }
+    });
+});
 </script>
 
 @endsection

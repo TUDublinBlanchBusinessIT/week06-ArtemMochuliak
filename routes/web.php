@@ -23,3 +23,4 @@ Route::resource('orderdetails', orderdetailController::class);
 // Custom routes for the shop window
 Route::get('product/additem/{id}', [productController::class, 'additem'])->name('products.additem');
 Route::get('product/displaygrid', [productController::class, 'displayGrid'])->name('products.displaygrid');
+Route::get('product/emptycart', 'App\Http\Controllers\productController@emptycart')->name('product.emptycart');

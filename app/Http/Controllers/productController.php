@@ -64,10 +64,25 @@ class ProductController extends Controller
     }
 
     public function displayGrid(Request $request)
-    {
-        $products = Product::all();
-        return view('products.displaygrid')->with('products', $products);
+{
+    $products = Product::all();
+
+    // Calculate total items in cart
+    if ($request->session()->has('cart')) {
+        $cart = $request->session()->get('cart');
+        $totalQty = 0;
+        foreach ($cart as $product => $qty) {
+            $totalQty += $qty;
+        }
+        $totalItems = $totalQty;
+    } else {
+        $totalItems = 0;
     }
+
+    return view('products.displaygrid')
+        ->with('products', $products)
+        ->with('totalItems', $totalItems);
+}
 
     public function additem($productid)
     {
@@ -86,4 +101,14 @@ class ProductController extends Controller
             'total' => array_sum($cart)
         ], 200);
     }
+
+
+    public function emptycart()
+{
+    if (Session::has('cart')) {
+        Session::forget('cart'); // remove cart from session
+    }
+    return response()->json(['success' => true], 200);
+}
+
 }
